@@ -159,7 +159,7 @@ Se tudo ocorrer bem, você deve conseguir ver a seguinte tela.
 
 Namenode está tudo ok, vamos agora para os datanodes.
 
-### Siga os passos abaixo para subir o datanode
+### Siga os passos abaixo para subir os datanodes
 
 #### Observação
 
