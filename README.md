@@ -63,7 +63,7 @@ Ela que será usado para armazenar todos os scripts necessários para subir noss
 
 1 - Crie o arquivo **nn-statefulset.yaml** e adicione o conteúdo abaixo:
 
-https://github.com/tiagotsc/docker-hadoop/blob/7b340ada16a5f2a471f575410428ad9c4092af6b/hadoop_3.3.5/namenode/Dockerfile#L1-51
+https://github.com/tiagotsc/microk8s-hadoop/blob/185c2e118bef6cec01dcf4622ae9fa35040d1996/nn-statefulset.yaml#L1-51
 
 Substitua o que esta em destaque na figura abaixo pela sua imagem.
 
@@ -99,7 +99,7 @@ Quando o pod já estiver com status de **Running**, cancele o comando de acompan
 
 3 - Crie o arquivo **nn-service-internal.yaml**,adicione o conteúdo abaixo e salve:
 
-https://github.com/tiagotsc/docker-hadoop/blob/7b340ada16a5f2a471f575410428ad9c4092af6b/hadoop_3.3.5/namenode/Dockerfile#L1-15
+https://github.com/tiagotsc/microk8s-hadoop/blob/185c2e118bef6cec01dcf4622ae9fa35040d1996/nn-service-internal.yaml#L1-15
 
 Com esse serviço vamos expor nosso **namenode** internamente no cluster Kubernetes.
 
@@ -112,7 +112,7 @@ kubectl apply -f nn-service-internal.yaml
 
 5 - Vamos criar mais um serviço, crie o arquivo **nn-service-loadbalance.yaml**, adicione o conteúdo abaixo e salve:
 
-https://github.com/tiagotsc/docker-hadoop/blob/7b340ada16a5f2a471f575410428ad9c4092af6b/hadoop_3.3.5/namenode/Dockerfile#L1-15
+https://github.com/tiagotsc/microk8s-hadoop/blob/185c2e118bef6cec01dcf4622ae9fa35040d1996/nn-service-loadbalance.yaml#L1-10
 
 Esse serviço será o responsável por expor o **namenode** externamente para que possamos acessar o painel do cluster Hadoop.
 
@@ -174,7 +174,7 @@ Guarde essa chave, pois ela será usado posteriormente.
 
 1 - Crie o arquivo **dn-statefulset.yaml** e adicione o conteúdo abaixo:
 
-https://github.com/tiagotsc/docker-hadoop/blob/7b340ada16a5f2a471f575410428ad9c4092af6b/hadoop_3.3.5/namenode/Dockerfile#L1-46
+https://github.com/tiagotsc/microk8s-hadoop/blob/185c2e118bef6cec01dcf4622ae9fa35040d1996/dn-statefulset.yaml#L1-46
 
 Substitua o que esta em destaque na figura abaixo pela sua imagem.
 
@@ -212,9 +212,9 @@ Quando o pod já estiver com status de **Running**, cancele o comando de acompan
 
 Nesse exemplo subi 2 pods **datanode**.
 
-3 - Crie o arquivo **nn-service-internal.yaml**,adicione o conteúdo abaixo e salve:
+3 - Crie o arquivo **dn-service-internal.yaml**,adicione o conteúdo abaixo e salve:
 
-https://github.com/tiagotsc/docker-hadoop/blob/7b340ada16a5f2a471f575410428ad9c4092af6b/hadoop_3.3.5/namenode/Dockerfile#L1-15
+https://github.com/tiagotsc/microk8s-hadoop/blob/185c2e118bef6cec01dcf4622ae9fa35040d1996/dn-service-internal.yaml#L1-15
 
 Com esse serviço vamos expor nossos **datanode** internamente no cluster Kubernetes.
 
