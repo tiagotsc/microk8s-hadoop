@@ -63,7 +63,7 @@ Ela que será usado para armazenar todos os scripts necessários para subir noss
 
 1 - Crie o arquivo **nn-statefulset.yaml** e adicione o conteúdo abaixo:
 
-https://github.com/tiagotsc/microk8s-hadoop/blob/ddd5cf9b762fd0831099f6138f396995810f8a5f/nn-statefulset.yaml#L1-51
+https://github.com/tiagotsc/microk8s-hadoop/blob/ddd5cf9b762fd0831099f6138f396995810f8a5f/nn-statefulset.yaml
 
 Substitua o que esta em destaque na figura abaixo pela sua imagem.
 
