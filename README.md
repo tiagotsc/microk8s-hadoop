@@ -212,13 +212,13 @@ kubectl get pods -w -l app=datanode
 
 Quando o pod já estiver com status de **Running**, cancele o comando de acompanhamento anterior.
 
-Nesse exemplo subi 2 pods **datanode**.
+Nesse exemplo subi 2 pods **datanodes**.
 
 3 - Crie o arquivo **dn-service-internal.yaml**,adicione o conteúdo abaixo e salve:
 
 https://github.com/tiagotsc/microk8s-hadoop/blob/185c2e118bef6cec01dcf4622ae9fa35040d1996/dn-service-internal.yaml#L1-L15
 
-Com esse serviço vamos expor nossos **datanode** internamente no cluster Kubernetes.
+Com esse serviço vamos expor nossos **datanodes** internamente no cluster Kubernetes.
 
 4 - Suba o serviço, execute:
 
@@ -229,7 +229,7 @@ kubectl apply -f dn-service-internal.yaml
 
 5 - Vamos iniciar os **datanodes**, em cada um, execute:
 
-Observação: Só não esqueça de mudar o nome do datanode de acordo com qual deseja acessar
+Observação: Só não esqueça de mudar o nome do datanode de acordo com qual deseja acessar.
 
 ````bash
 # Acesse o datanode-0, por exemplo
@@ -273,6 +273,8 @@ kubectl get service --selector="app=datanode" -n default -o jsonpath='{range .it
 
 Copie o conteúdo (IPs e DNS) do comando anterior e cole no arquivo **hosts** do seu SO e salve.
 
+![App Screenshot](images/img11.png)
+
 - No **Windows**, esse arquivo fica em:
   
   C:\Windows\System32\drivers\etc\hosts
@@ -287,7 +289,7 @@ http://IP_PEGO:9870
 
 ![App Screenshot](images/img12.png)
 
-Ao clicar em um dos **datanodes**, você poderá mais detalhes a respeito do estado do nó.
+Ao clicar em um dos **datanodes**, você poderá ver mais detalhes a respeito do estado de cada nó.
 
 #### Concluiu todo o passo a passo e desejava remover os recursos criados, execute os comandos abaixo:
 
