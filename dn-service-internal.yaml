@@ -1,0 +1,15 @@
+# Datanode - Service Cluster IP
+# kubectl apply -f dn-service-clusterip.yaml
+# kubectl get services -o wide
+# kubectl delete service datanode
+apiVersion: v1
+kind: Service
+metadata:
+  name: datanode
+spec:
+  ports:
+  - port: 22
+    name: ssh
+  clusterIP: None
+  selector:
+    app: datanode

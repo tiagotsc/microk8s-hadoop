@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: namenode
+spec:
+  serviceName: "namenode"
+  replicas: 1
+  updateStrategy:
+    type: OnDelete
+  selector:
+    matchLabels:
+      app: namenode
+  template:
+    metadata:
+      labels:
+        app: namenode
+    spec:
+      containers:
+      - name: namenode
+        image: SEU_USUARIO_DOCKER/SUA_IMAGEM_HADOOP_NAMENODE
+        command:
+          - /usr/sbin/init
+        securityContext:
+          privileged: true
+        ports:
+        - containerPort: 9870
+          name: port1
+        - containerPort: 50030
+          name: port2
+        - containerPort: 8020
+          name: port3
+        lifecycle:
+          postStart:
+            exec:
+              command: 
+                - "sh"
+                - "-c"
+                - >
+                  INDEX=${HOSTNAME##*-};
+                  HDP_CSITE=/home/hduser/hadoop/etc/hadoop/core-site.xml;
+                  HDP_WOR_LABEL=datanode-;
+                  HDP_WOR_FILE=/home/hduser/hadoop/etc/hadoop/workers;
+                  NS=default;
+                  DM=cluster.local;
+                  SNAME_NN=namenode;
+                  SNAME_DN=datanode;
+                  if [ "$INDEX" = "0" ]; then
+                    su hduser && sed -i "s/namenode1/$HOSTNAME.$SNAME_NN.$NS.svc.$DM/g" $HDP_CSITE && sed -i "s/datanode/$HDP_WOR_LABEL/g" $HDP_WOR_FILE && sed -i "s/$/.$SNAME_DN.$NS.svc.$DM/g" $HDP_WOR_FILE
+                  elif [ "$INDEX" = "1" ]; then
+                    su hduser && sed -i "s/namenode1/namenode-0.$SNAME_NN.$NS.svc.$DM/g" $HDP_CSITE && sed -i "s/datanode/$HDP_WOR_LABEL/g" $HDP_WOR_FILE && sed -i "s/$/.$SNAME_DN.$NS.svc.$DM/g" $HDP_WOR_FILE
+                  fi

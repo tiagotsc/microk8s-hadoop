@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: datanode
+spec:
+  serviceName: datanode
+  replicas: 2
+  updateStrategy:
+    type: OnDelete
+  selector:
+    matchLabels:
+      app: datanode
+  template:
+    metadata:
+      labels:
+        app: datanode
+    spec:
+      containers:
+      - name: datanode
+        image: SEU_USUARIO_DOCKER/SUA_IMAGEM_HADOOP_DATANODE
+        command:
+          - /usr/sbin/init
+        securityContext:
+          privileged: true
+        ports:
+        - containerPort: 9864
+          name: port1
+        - containerPort: 22
+          name: port2
+        lifecycle:
+          postStart:
+            exec:
+              command: 
+                - "sh"
+                - "-c"
+                - >
+                  INDEX=${HOSTNAME##*-};
+                  HDP_CSITE=/home/hduser/hadoop/etc/hadoop/core-site.xml;
+                  HDP_WOR_LABEL=datanode-;
+                  HDP_WOR_FILE=/home/hduser/hadoop/etc/hadoop/workers;
+                  NS=default;
+                  DM=cluster.local;
+                  SNAME_NN=namenode;
+                  SNAME_DN=datanode;
+                  NN_PUB_SSH_KEY="CHAVE_PUBLICA_SSH_AQUI";
+                  su hduser && sed -i "s/namenode1/namenode-0.$SNAME_NN.$NS.svc.$DM/g" $HDP_CSITE && sed -i "s/datanode/$HDP_WOR_LABEL/g" $HDP_WOR_FILE && sed -i "s/$/.$SNAME_DN.$NS.svc.$DM/g" $HDP_WOR_FILE && echo $NN_PUB_SSH_KEY > /home/hduser/.ssh/authorized_keys
