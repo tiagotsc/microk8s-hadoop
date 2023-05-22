@@ -190,6 +190,8 @@ Ou, se quiser, você pode usar a imagem que já tenho pronta.
 
 Coloque também dentro desse arquivo a chave SSH que tinha sido obtida anteriormente.
 
+![App Screenshot](images/img7.png)
+
 Depois de efetuar as alterações, salve o arquivo.
 
 2 - Vamos subir nosso **Datanode**, execute:
