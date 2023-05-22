@@ -1,5 +1,5 @@
 ﻿
-## MicroK8s - Provisionando um cluster Data Lake Hadoop no Kubernetes MicroK8s
+## MicroK8s - Provisionando um cluster Data Lake Hadoop no Kubernetes
 
 Será criado de forma rápida e objetiva um cluster Data Lake Hadoop no Kubernetes MicroK8s.
 
