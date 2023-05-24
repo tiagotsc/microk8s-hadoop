@@ -351,7 +351,7 @@ kubectl delete TIPO_RECURSO NOME_DADO_AO_RECURSO
 # Caso queira obter a lista de um recurso
 kubectl get TIPO_RECURSO
 ou
-kubectl get TIPO_RECURSO	NOME_DADO_AO_RECURSO # Para listar 1 em específico
+kubectl get TIPO_RECURSO NOME_DADO_AO_RECURSO # Para listar 1 em específico
 
 # Obtendo a lista de pods com mais detalhe
 kubectl get pods -o wide
