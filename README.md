@@ -1,7 +1,47 @@
 ﻿
 ## MicroK8s - Provisionando um cluster Data Lake Hadoop no Kubernetes
 
-Será criado de forma rápida e objetiva um cluster Data Lake Hadoop no Kubernetes MicroK8s.
+Hadoop é um data lake bem consolidado no mercado e bem eficiente no que se propõe que é trabalhar com grandes volumes de dados.
+
+Existem 2 maneiras de instalar Hadoop que são:
+
+- **Single-node** ou **Pseudo-distributed**
+
+  O **Namenode** e **Datanode** residem na mesma máquina, simulando um cluster. 
+  
+  Essa configuração é ótima para testes e desenvolvimento encima da ferramenta.
+  
+- **Mult-node** ou simplesmente **Cluster**
+
+  Nessa configuração o Hadoop já é um cluster de fato e se aproximo do é visto em produção.
+  
+Na instalação do tipo **Cluster** é possível configurar de 2 forma:
+
+- Um único namenode
+
+  Recomendado apenas para testes, pois se um namenode cair você pode perder tudo.
+  
+- 2 ou mais namenodes
+
+  Nesse a instalação, além do **Namenode principal**, vai ter um ou mais **Standy by namenode** que sobem caso o namenode principal caia. 
+  
+  Dessa forma não há perda dos metadados. Esse é o recomendável para produção.
+
+Em relação a **segurança**, existem 2 cenários:
+
+- Sem segurança (padrão)
+  
+  Por padrão a instalação não vem com a configuração de segurança ativa.
+  
+  É recomendável apenas para ambiente de testes.
+  
+- Protocolo **Kerberos**.
+  
+  É preciso configurar e assim seu data lake vai ter toda uma camada de proteção encima do protocolo **Kerberos**.
+  
+  Essa é a recomendável para um ambiente de produção.
+
+Nesse passo a passo vamos criar um cluster Data Lake Hadoop no Kubernetes MicroK8s que vai proporcionar um ótimo cenário para estudos e com os ajustes adequados é possível levá-lo para produção também.
 
 Tudo o que for implementado ou criado na pasta raiz desse tutorial, já ficará disponível dentro do diretório das VMs em:
 
